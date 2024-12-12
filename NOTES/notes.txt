@@ -1,0 +1,110 @@
+(1)sanity.io opened in browser and click icon matlb apni dp phir click manag1 
+(2)click growth trial
+(3)click on overview
+(4)copy url in next step (npm create sanity@latest -- --project 7x3j654i --dataset production --template clean)
+(5)past in terminal and answer the questions then yes ,yes,yes,yes, yes, clean projects , yes  
+
+google (osko select krna he jis account sanity ko login kiya hoga) 
+
+***installation done******
+
+(.)env.local me he id wagera hmari
+(.)client sanity sy data lekr ayga
+(.)index.ts me hm apna data bnaygy type me jo quation bany ga jesy name lastName image 
+
+
+(.)members me jakr hm or bndy bhi add kr skty hen as a admin taky koi or bhi add kr sky data like hmara client or koi nhi kr skty ga bs wo kr sky ga jisko hm athantication dengy
+
+
+(.)setting me jakr hm delete kr or rename kr skty hen 
+
+(.)access me hm ye dd kr skty hen ke localhost3000 ke ilawa wo kis kis me open ho sky like 3001 3002
+
+///////////////////////////
+(.)sanity schema ko hm search krengy browser pr phir hm osmy dekhengy jakr ke kis trha sy type me input add krty hen wah bhut sari chizen hotin hen jesy
+Schema Types
+Array
+Block
+Boolean
+Date
+Datetime
+Document
+File
+Geopoint
+Image
+Number
+Object
+Reference
+Slug
+String
+Span
+Text
+URL
+
+/////////////////////////
+chq krny ke liye ke data ara he ya nhi 
+
+type me data bnany ke bad hm broswer me version me jaengy or waha jakr dekhengy query me likhengy *[_type=="hero"]{username}
+
+* yani sb or type == hero hero wo name he jo hm dengy name me jisko wo phchan kr data layga{username} ye wo name he jo hm field me he jisy hm fetch krengy or iski jga hm age ya koc bhi likh skty hen
+
+
+(.)*[_type=="hero"]{username}
+yehi hm url ki jga likhengy fetch me
+
+/////////////////////////
+
+Images 
+
+isko hm same wesy hi krengy lekin is bar hm documents ki jga pr sanity schema me image pr jaygy or oski fileld ke mutabik hm likhengy type me , dal kr 
+
+ {
+          title: 'Poster', // screen input ki heading hai
+          name: 'heroPic', // sanity isko is name sy pehcany gya
+          type: 'image',   // data type of input box
+          options: {
+            hotspot: true, // <-- Defaults to false
+          },
+          fields: [
+            {
+              name: 'attribution',
+              type: 'string',
+              title: 'Attribution',
+            },
+          ],
+        },
+
+
+        or version me jb cheq krengy to esy
+
+        *[_type == 'hero']{"poster": heroPic.asset->url }
+
+        or ts config ki file me hm add bhi krengy koch 
+
+        (.)next.js images search krengy hm broswer pr wah asy nexjs component pr jaen gy phir wha sy copy krengy
+
+    wesy hm direct bhi ye pest kr skty hen 
+
+
+
+  (  import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        port: '',
+        pathname: '**',
+       
+      },
+    ],
+  },
+};
+
+export default nextConfig;
+)
+
