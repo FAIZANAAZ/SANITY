@@ -4,11 +4,11 @@ import Image from "next/image";
 export default async function Home() {
   // Fetch data from Sanity
   const res = await client.fetch(
-    "*[_type == 'hero']{'poster': poster.asset->url, heading, desc, btnOne}"
+    "*[_type =='hero']{heading,desc,btn,'alt':pic.alt,'pic':pic.asset->url}"
   );
 
   // Ensure the response has data and destructure it safely
-  const { poster , heading , desc , btnOne  } = await res[0];
+  const { heading , desc , alt , pic ,btn } = await res[0];
 
   return (
     <>
@@ -18,8 +18,8 @@ export default async function Home() {
         >
           <div className="h-[500px] w-[40%] rounded-lg overflow-hidden shadow-lg">
             <Image
-              src={poster } // Add a fallback image if `poster` is not available
-              alt="Poster"
+              src={pic } // Add a fallback image if `poster` is not available
+              alt={alt}
               width={1000}
               height={1000}
               className="w-full h-full object-cover rounded-lg"
@@ -32,7 +32,7 @@ export default async function Home() {
               type="button"
               className="mt-6 px-5 py-2.5 w-full rounded-lg text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700"
             >
-              {btnOne}
+              {btn}
             </button>
           </div>
         </div>
