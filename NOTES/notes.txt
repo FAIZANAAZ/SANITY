@@ -108,3 +108,14 @@ const nextConfig: NextConfig = {
 export default nextConfig;
 )
 
+/////////////////////////*********************************/////////////////////////
+
+my own projects 
+
+ye hm khod bnaygy project bina id ke wo phly wala hmy jo id milty thi oski madad sy bnaty thy
+
+npm create sanity@latest -- --create-project "my project" --dataset production --template clean
+
+esy hmny "my project " ke name sy ak or project bna liya he jo hmy baqaida shoe bhi hoga sanituy ki website me
+
+
