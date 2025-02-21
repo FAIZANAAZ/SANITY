@@ -2,6 +2,7 @@
 (2)click growth trial
 (3)click on overview
 (4)copy url in next step (npm create sanity@latest -- --project 7x3j654i --dataset production --template clean)
+ye cammand sanity ke oper bani hoi project ko apny vs me lekr ana hr
 (5)past in terminal and answer the questions then yes ,yes,yes,yes, yes, clean projects , yes  
 
 google (osko select krna he jis account sanity ko login kiya hoga) 
@@ -117,5 +118,15 @@ ye hm khod bnaygy project bina id ke wo phly wala hmy jo id milty thi oski madad
 npm create sanity@latest -- --create-project "my project" --dataset production --template clean
 
 esy hmny "my project " ke name sy ak or project bna liya he jo hmy baqaida shoe bhi hoga sanituy ki website me
+/////////////////////////*********************************/////////////////////////
+for find data 
 
 
+*[_type=='landingpage'][0]{
+  'frontWebImage':sections[0].frontWebImage.asset->url
+}
+
+ismy *[_type=='landingpage'] ye to likhty he 
+osky bad hmny kha 0 index pr jao yani wojo page ka apna he array osmy jayga wo
+phir hmny kha ke section me jao or oska 0 index lekr ki value lekr ao bs property frontWebImage
+hmn khod de dengy
