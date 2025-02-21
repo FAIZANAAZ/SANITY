@@ -24,3 +24,10 @@ export const sanityDeleteData = async (_id :string) => {
     
     return response
 }
+
+export const sanityUpdateData = async (_id :string,updatadeName :string) => {
+    const response = await client.patch(_id).set({name:updatadeName}).commit()
+    console.log(response);
+    // best practice he ke schema ka name bhi btana he 1 sy zada hen ar schema taky wo confuse n HO
+    return response
+}

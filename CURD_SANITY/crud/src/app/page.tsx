@@ -1,5 +1,5 @@
 "use client"
-import { sanityCreateData, sanityDeleteData, sanityFetch } from "@/service/sanitydata";
+import { sanityCreateData, sanityDeleteData, sanityFetch, sanityUpdateData } from "@/service/sanitydata";
 import { useEffect, useState } from "react";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 
@@ -12,6 +12,7 @@ export default function Home() {
   const [list, setList] = useState<string[]>([]);
   const [editIndex, setEditIndex] = useState(0);
   const [namesArray, setNamesArray] = useState<IName[]>([]);
+  const [saveId , setSaveId] = useState("");
   
 // read krna mangwana
   useEffect(() => {
@@ -30,33 +31,35 @@ export default function Home() {
   //  data dobara dikhany ke liye update krny ke liye
    const response = await sanityFetch()
       setNamesArray(response)
+      setInputValue("")
   }
 
+  // delet kryga ye sanity sy 
   async function deleteFunc(_id:string){
      await sanityDeleteData(_id) 
     const deleteData: IName[] = await sanityFetch();
     setNamesArray(deleteData)
+    setSaveId(_id)//isny index save kr liya 
   }
 
-  function editFunc(index:number){
-    const editValue = [...list]
-    setInputValue(editValue[index])
-    setEditIndex(index)
-  }
-
-  function updateFunc(){
-   if (inputValue !== "") {
-    const updateValue = [...list]
-    updateValue[editIndex] = inputValue
-    setList(updateValue)
-    setInputValue("")
+  async function editFunc(index:number){
+    setInputValue(namesArray[index].name)
     
-   }
+  }
+
+  async function updateFunc(){
+      const id= namesArray[editIndex]._id
+      const updateName =inputValue
+       await sanityUpdateData(id,updateName)
+
+       const updateData: IName[] = await sanityFetch();
+       setNamesArray(updateData)
+       setInputValue("")
 
   }
   return (
    <div className="h-screen flex flex-col justify-center items-center bg-white gap-5">
-    <input className="h-10 w-80 border-black border-2 rounded p-2" type="text" placeholder="enter your name here" value={inputValue}
+    <input className="h-10 w-80 border-black text-black border-2 rounded p-2" type="text" placeholder="enter your name here" value={inputValue}
     onChange={(e)=>{setInputValue(e.target.value)}}/>
     <div className="flex gap-8">
     <button className="w-20 h-8 border-black border-2 rounded-lg p-1 bg-gray-300 hover:bg-white" onClick={()=>{submitFunc()}}>Submit</button>
