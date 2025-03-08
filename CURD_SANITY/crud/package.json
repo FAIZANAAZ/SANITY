@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "data":"node src/script/migration.mjs",
+    "deleteData":"node src/script/delet_Sript.mjs"
   },
   "dependencies": {
     "@sanity/image-url": "^1.1.0",
